@@ -1,0 +1,164 @@
+body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #d9e4c6;
+  font-size: 25px;
+  background-image: url(/image/header-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 78vw;
+  left: 10vw;
+  height: 21%;
+  background-color: #5e8787;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#Title {
+  font-size: 1.8em;
+  text-align: center;
+  margin: 20px;
+}
+
+#ContentAddAerea {
+  text-align: center;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+}
+#ContentAddAerea li {
+  width: 185px;
+  height: 50px;
+  font-size: 1.5em;
+  margin: 0px;
+  cursor: pointer;
+  border: solid black 2px;
+}
+
+#ContentList {
+  background-color: #5e8787;
+  position: fixed;
+  top: 21%;
+  left: 10vw;
+  width: 78vw;
+  height: 72%;
+  margin: 0 auto;
+  padding: 0;
+  overflow: auto;
+}
+
+.ContentBox {
+  display: flex;
+  height: 60%;
+  width: 97%;
+  cursor: grab;
+  border: 5px solid black;
+  margin: 3px;
+  background-color: gray;
+}
+.ContentBox .ContentLeft {
+  height: 100%;
+  width: 30%;
+  z-index: 1;
+}
+.ContentBox .ContentRight {
+  height: 100%;
+  width: 70%;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+li {
+  list-style: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 0%;
+  left: 10vw;
+  width: 78vw;
+  height: 7%;
+  text-align: center;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  flex-direction: column;
+  top: 23%;
+  left: 28vw;
+  width: 43vw;
+  height: 46%;
+  background-color: #d9e4c6;
+}
+#modal .ModalTopBar {
+  display: flex;
+  height: 20%;
+  width: 100%;
+}
+#modal .ModalTopBarLeft {
+  height: 100%;
+  width: 50%;
+  padding-left: 5%;
+  font-size: 3rem;
+}
+#modal .ModalTopBarRight {
+  height: 100%;
+  width: 50%;
+}
+#modal .ModalTopBarRight .ModalClose {
+  position: relative;
+  top: 30%;
+  height: 37px;
+  width: 50px;
+  left: 75%;
+  font-size: 1em;
+}
+#modal .ModalCloseAerea i {
+  font-size: 30px;
+  position: relative;
+  top: 2vh;
+  right: -17vw;
+}
+#modal .ModalInput {
+  display: flex;
+  height: 60%;
+  width: 100%;
+  flex-direction: column;
+}
+
+#modal label {
+  padding: 10px 0;
+  padding-left: 10px;
+  margin-left: 30px;
+  font-size: 1.5rem;
+}
+
+#modal input,
+textarea {
+  margin: 10px;
+  height: 17%;
+  width: 85%;
+  font-size: 1.3em;
+  margin-left: 30px;
+}
+#modal .ModalSubmitArea {
+  height: 20%;
+  position: relative;
+  text-align: center;
+}
+#modal .ModalSumbitBtn {
+  height: 65%;
+  width: 25%;
+  font-size: 2rem;
+}

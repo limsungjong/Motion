@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./build/main.js"></script>
+    <script src="https://kit.fontawesome.com/8e31ecfd50.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <div id="Title">MOTION</div>
+      <ol id="ContentAddAerea">
+        <li class="ImageAddAerea">IMAGE</li>
+        <li class="VideoAddAerea">VIDEO</li>
+        <li class="NoteAddAerea">NOTE</li>
+        <li class="TaskAddAerea">TASK</li>
+      </ol>
+    </header>
+    <ol id="ContentList">
+      <li class="ContentBox" draggable="true">
+        <div class="ContentLeft"></div>
+        <div class="ContentRight">
+          <embed id="ytplayer" type="text/html" width="90%" height="100%" src="https://www.youtube.com/embed/rRzxEiBLQCA" frameborder="0">
+            <div class="RemoveNode">
+              <button aria-label="Close">X</button>
+            </div>
+          </div>
+        </li>
+        <li class="ContentBox" draggable="true">
+          <div class="ContentLeft"></div>
+          <div class="ContentRight">
+            <embed id="ytplayer" type="text/html" width="90%" height="100%" src="https://www.youtube.com/embed/XA2YEHn-A8Q" frameborder="0">
+              <div class="RemoveNode">
+                <button aria-label="Close">X</button>
+              </div>
+            </div>
+          </li>
+    </ol>
+    <div id="modal">
+      <div class="ModalTopBar">
+        <div class="ModalTopBarLeft"></div>
+        <div class="ModalTopBarRight">
+            <button aria-label="Close" class="ModalClose">X</button>
+        </div>
+      </div>
+      <div class="ModalInput">
+        <label for=".ModalTitleInput">Title</label>
+        <input class="ModalTitleInput">
+      </input>
+      <label for=".ModalContentInput">Content</label>
+        <textarea class="ModalContentInput"></textarea>
+      </div>
+      <div class="ModalSubmitArea">
+        <button class="ModalSumbitBtn">Submit</button>
+      </div>
+      
+    </div>
+    <footer>Footer</footer>
+  </body>
+</html>
