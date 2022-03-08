@@ -19,26 +19,35 @@
         <li class="TaskAddAerea">TASK</li>
       </ol>
     </header>
-    <ol id="ContentList">
-      <li class="ContentBox" draggable="true">
-        <div class="ContentLeft"></div>
+    <div id="ContentList">
+      <section class="ContentBox" draggable="true">
+        <div class="ContentLeft">Taeyeon INVU</div>
         <div class="ContentRight">
-          <embed id="ytplayer" type="text/html" width="90%" height="100%" src="https://www.youtube.com/embed/rRzxEiBLQCA" frameborder="0">
+          <embed id="ytplayer" type="text/html" width="90%" height="100%" src="https://www.youtube.com/embed/AbZH7XWDW_k" frameborder="0">
+          </div>
+          <div class="RemoveNode">
+            <button aria-label="Close">X</button>
+          </div>
+        </section>
+        <section class="ContentBox" draggable="true">
+          <div class="ContentLeft">Twice Heart Shaker</div>
+          <div class="ContentRight">
+            <embed id="ytplayer" type="text/html" width="90%" height="100%" src="https://www.youtube.com/embed/rRzxEiBLQCA" frameborder="0">
+            </div>
             <div class="RemoveNode">
               <button aria-label="Close">X</button>
             </div>
-          </div>
-        </li>
-        <li class="ContentBox" draggable="true">
-          <div class="ContentLeft"></div>
-          <div class="ContentRight">
-            <embed id="ytplayer" type="text/html" width="90%" height="100%" src="https://www.youtube.com/embed/XA2YEHn-A8Q" frameborder="0">
+          </section>
+          <section class="ContentBox" draggable="true">
+            <div class="ContentLeft">Task</div>
+            <div class="ContentRight">
+              <ol>asd</ol><ol>asd</ol>
+              </div>
               <div class="RemoveNode">
                 <button aria-label="Close">X</button>
               </div>
-            </div>
-          </li>
-    </ol>
+            </section>
+    </div>
     <div id="modal">
       <div class="ModalTopBar">
         <div class="ModalTopBarLeft"></div>
@@ -48,7 +57,7 @@
       </div>
       <div class="ModalInput">
         <label for=".ModalTitleInput">Title</label>
-        <input class="ModalTitleInput">
+        <input class="ModalTitleInput" maxlength="10">
       </input>
       <label for=".ModalContentInput">Content</label>
         <textarea class="ModalContentInput"></textarea>

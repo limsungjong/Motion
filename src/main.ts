@@ -17,7 +17,7 @@ type InputContentValue = {
 interface NewModal {
   MakeModal(E: Element): void; // 창 만들기
   RemoveModal(): void; // 창 닫기
-  ModalValue(): void; // 창에서 만든 값 받기
+  ModalValue(): InputContentValue; // 창에서 만든 값 받기
 }
 interface NewNode {
   createElement(): void;
@@ -29,7 +29,7 @@ class MakeModal implements NewModal {
 
   MakeModal(E: Element) {
     let text = document.querySelector(".ModalTopBarLeft");
-    let label = document.querySelector('label[for=".ModalTitleInput"]');
+    let label = document.querySelector('label[for=".ModalContentInput"]');
     let title = E.textContent;
     if (title == "IMAGE" || title == "VIDEO") {
       title = "URL";
@@ -60,9 +60,11 @@ class MakeModal implements NewModal {
     let target = document.querySelector(".ModalTopBarLeft")?.textContent;
     let title = (document.querySelector(".ModalTitleInput") as HTMLInputElement)
       .value;
+    if (title == "") title = "undefined";
     let content = (
       document.querySelector(".ModalContentInput") as HTMLInputElement
     ).value;
+    if (content == "") content = "undefined";
     if (target && title && content)
       return {
         target,
@@ -90,23 +92,26 @@ class MakeNodeContent implements NewNode {
             "https://www.youtube.com/embed/"
           );
           return `<embed class="ytplayer" type="text/html" width="100%" height="100%"
-          src="${Video}"
-          frameborder="0"></embed>`;
+          src="${Video}" frameborder="0"></embed>`;
         } else if (Video.includes("https://youtu.be/")) {
           Video = Video.replace(
             "https://youtu.be/",
             "https://www.youtube.com/embed/"
           );
           return `<embed class="ytplayer" type="text/html" width="100%" height="100%"
-          src="${Video}"
-          frameborder="0"></embed>`;
+          src="${Video}" frameborder="0"></embed>`;
         }
 
       case "NOTE":
         return this.target.content;
         break;
       case "TASK":
-        console.log(this.target.target);
+        let value = this.target.content.split("\n");
+        let newValue: string = "";
+        value.forEach((E) => {
+          newValue += `<li>${E}</li>`;
+        });
+        return newValue;
         break;
       default:
         console.log("no case");
@@ -116,7 +121,26 @@ class MakeNodeContent implements NewNode {
   }
 
   createElement() {
-    let contentBox = document.createElement("li");
+    if (this.target.target == "TASK") {
+      let contentBox = document.createElement("section");
+      let contentBoxLeft = document.createElement("div");
+      let contentBoxRight = document.createElement("ol");
+
+      contentBox.className = "ContentBox";
+      contentBoxLeft.className = "ContentLeft";
+      contentBoxRight.className = "ContentRight";
+
+      contentBox.setAttribute("draggable", "true");
+
+      contentBoxRight.innerHTML = this.checkValue();
+      contentBoxLeft.innerText = this.target.title;
+
+      document.querySelector("#ContentList")?.appendChild(contentBox);
+      contentBox.appendChild(contentBoxLeft);
+      contentBox.appendChild(contentBoxRight);
+      return;
+    }
+    let contentBox = document.createElement("section");
     let contentBoxLeft = document.createElement("div");
     let contentBoxRight = document.createElement("div");
 
@@ -127,6 +151,8 @@ class MakeNodeContent implements NewNode {
     contentBox.setAttribute("draggable", "true");
 
     contentBoxRight.innerHTML = this.checkValue();
+    contentBoxLeft.innerText = this.target.title;
+
     document.querySelector("#ContentList")?.appendChild(contentBox);
     contentBox.appendChild(contentBoxLeft);
     contentBox.appendChild(contentBoxRight);
@@ -203,8 +229,6 @@ document.addEventListener(
       ((event.target as Node).parentNode as HTMLElement).className ==
       "ContentBox"
     ) {
-      console.log("enter");
-
       (event.target as HTMLElement).style.color = "black";
     }
   },
@@ -219,7 +243,6 @@ document.addEventListener(
       ((event.target as Node).parentNode as HTMLElement).className ==
       "ContentBox"
     ) {
-      console.log("leave");
       (event.target as HTMLElement).style.color = "black";
     }
   },
@@ -253,3 +276,13 @@ document.addEventListener(
   },
   true
 );
+
+let list = document.querySelector("#ContentList");
+list?.addEventListener("click", (e) => {
+  try {
+    let target = (e.target as Node).parentElement?.parentElement;
+    if (target) list?.removeChild(target);
+  } catch (error) {
+    return;
+  }
+});

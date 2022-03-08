@@ -29,9 +29,9 @@ header {
 }
 
 #ContentAddAerea {
+  display: flex;
   text-align: center;
   flex-direction: row;
-  display: flex;
   justify-content: space-around;
   padding: 0;
 }
@@ -42,11 +42,12 @@ header {
   margin: 0px;
   cursor: pointer;
   border: solid black 2px;
+  list-style: none;
 }
 
 #ContentList {
-  background-color: #5e8787;
   position: fixed;
+  background-color: #5e8787;
   top: 21%;
   left: 10vw;
   width: 78vw;
@@ -66,20 +67,26 @@ header {
   background-color: gray;
 }
 .ContentBox .ContentLeft {
+  display: flex;
   height: 100%;
   width: 30%;
-  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
 }
 .ContentBox .ContentRight {
+  display: flex;
   height: 100%;
   width: 70%;
+  font-size: 2rem;
   align-items: center;
-  display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  flex-direction: column;
 }
 
-li {
-  list-style: none;
+.ContentBox .RemoveNode {
+  align-self: center;
+  margin-right: 10px;
 }
 
 footer {
@@ -89,6 +96,7 @@ footer {
   width: 78vw;
   height: 7%;
   text-align: center;
+  background-color: #d9e4c6;
 }
 
 #modal {
@@ -98,7 +106,7 @@ footer {
   top: 23%;
   left: 28vw;
   width: 43vw;
-  height: 46%;
+  height: 50%;
   background-color: #d9e4c6;
 }
 #modal .ModalTopBar {
@@ -147,7 +155,7 @@ footer {
 #modal input,
 textarea {
   margin: 10px;
-  height: 17%;
+  height: 25%;
   width: 85%;
   font-size: 1.3em;
   margin-left: 30px;
